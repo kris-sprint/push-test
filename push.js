@@ -13,11 +13,11 @@ push.setVapidDetails("mailto:test@code.co.uk", vapidKeys.publickKey, vapidKeys.p
 // the subscriptions of users that we want to recieve the notification, saved in a db
 let sub = {
   endpoint:
-    "https://fcm.googleapis.com/fcm/send/f_LpfP26yb8:APA91bHzzJuQdm-Ytx0SjzxEqtT3mhVIamvaKl4TSjsP54UWKuqKi9Wl0aPh0KnVfzR0zFG8fGVcx1QMJYqKUDbi-9LwVMdMchV7dgo2v3HmR0X7q5SH2-QrQ6Yg5hjE5BO7IkLhwnvS",
+    "https://fcm.googleapis.com/fcm/send/dNHOGui8TmI:APA91bFcvSUD54GmVsFzwhLxmgf2SHxT9pj-IMZC3CIyhosLGkdI2mIJ1xNcLDyYQSk_K9kAkzQiVNwWoqdKnWFbv_DZU9nU52uawtQK9aBcAv6OttJnUXfGqqFGBneJtc1_xsWvGJDP",
   expirationTime: null,
   keys: {
-    p256dh: "BPjh1lUsYHh7y7l5fmcFD8nOvDBN9K9o9x3gm7bmqGcDWuxZUd6fvZx-8S9FnCBYV1eo8qqkQHOELlbMF5jLndM",
-    auth: "cKjKI9vQ5HY51W5QTSMRmw",
+    p256dh: "BHj4g7d7iSsIaE1sIfqWHQQOMs0Qata6YyMXpFjc6FwiiG5k2MhmoXl-KC1JiJ2ac0cmhaBsRtCKI3xB7mjZztU", // public key - used to ensure that only the intended recipient can decrypt the message
+    auth: "Gg1phCI_WlFc4H-yXQDFtg", // authentication secret key
   },
 };
 
