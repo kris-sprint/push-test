@@ -17,6 +17,7 @@
         margin-top: 10px;
       }
     </style>
+    <link rel="manifest" href="/manifest.json" />
   </head>
   <body>
     <button onclick="subscribe()">subscribe</button>
@@ -42,7 +43,7 @@
             "BNH47KprCpAVsmy4rMH7-CIk-zMMtSaxOJG_dzYZnY9lsoym3AHlaHfCw7lhLaZ_5hJsx3W7buKU4_5mS6A0-2k",
         }); // Get the push manager
         console.log("push", JSON.stringify(push));
-        
+
         // Write the subscription details to the pre tag
         let pushDetails = document.getElementById("pushDetails");
         pushDetails.textContent = JSON.stringify(push, null, 2); // Format as JSON with indentation
@@ -51,11 +52,14 @@
       // Function to copy the contents of the pre tag to clipboard
       function copyToClipboard() {
         let pushDetails = document.getElementById("pushDetails").textContent;
-        navigator.clipboard.writeText(pushDetails).then(() => {
-          alert("Copied to clipboard!");
-        }).catch(err => {
-          console.error("Failed to copy: ", err);
-        });
+        navigator.clipboard
+          .writeText(pushDetails)
+          .then(() => {
+            alert("Copied to clipboard!");
+          })
+          .catch((err) => {
+            console.error("Failed to copy: ", err);
+          });
       }
     </script>
   </body>
