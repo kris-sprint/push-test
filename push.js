@@ -13,11 +13,11 @@ push.setVapidDetails("mailto:test@code.co.uk", vapidKeys.publickKey, vapidKeys.p
 // the subscriptions (vapidDetails in the types) of users that we want to recieve the notification, saved in a db
 let windowsSub = {
   endpoint:
-    "https://fcm.googleapis.com/fcm/send/ckLo8LaI9MY:APA91bH_TITVreaVgDjtWLw3B8FMyCnqzGugNiwKHWkk5hzRnzWKEnhQfD0wUWKruWMSee-HxrZBNwqorQvpKfISG6_xr_n9BdaCZ_tXT0p1aU6OPU5n9yqYfRSxRtbyVvvB1-NavH6t",
+    "https://fcm.googleapis.com/fcm/send/cy2FENj12A4:APA91bHMLCuLiGcaOJCPnm9hgLTOp2okwYJ_FGxG96-AMayC94ZH8huaAFY3JGLDxe5GC_-R4nNxJYdMVCavePiSD5CaW1Cu7aesPH_6EIrZFvf9WxARQEtHR5NIGQnM-p3NujiAlF9Z",
   expirationTime: null,
   keys: {
-    p256dh: "BGU-EzkfVikMTybVgjlzIYqj457IzB8Up4vOTGo_UcI1aHZgU5QvycjR2OonUE7hYcnbt_LRw7pX85-o6Oi4C4s",
-    auth: "ynHaSHuifNPhsvH6IcqG2g",
+    p256dh: "BF6jGh4SUAafqOL5mM7z9C3gpEVu1MEv6chOoGfH2JwkSb79hx_oj_6U7rllXRfVqt7il2x9-O2Fz5io6fNvkbg",
+    auth: "VjGKj7ruSS4GFDkaFWjFTg",
   },
 };
 let iosSub = {
@@ -56,6 +56,6 @@ let payload = JSON.stringify({
 });
 
 push
-  .sendNotification(windowsSub, payload)
+  .sendNotification(androidSub, payload)
   .then(() => console.log("Notification sent successfully"))
   .catch((err) => console.error("Error sending notification", err));
