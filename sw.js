@@ -20,5 +20,5 @@ self.addEventListener("push", (e) => {
     ],
   };
 
-  e.waitUntil(self.registration.showNotification("Hello world!", options));
+  e.waitUntil(self.registration.showNotification(parsedData.title, options));
 });
