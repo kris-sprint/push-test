@@ -21,4 +21,23 @@ let sub = {
   },
 };
 
-push.sendNotification(sub, "Test message!");
+// Payload can be anything
+let payload = JSON.stringify({
+  title: "Hello world!",
+  body: "This notification was generated from a push!",
+  icon: "images/example.png",
+  vibrate: [100, 50, 100],
+  data: {
+    dateOfArrival: Date.now(),
+    primaryKey: "2",
+  },
+  actions: [
+    { action: "explore", title: "Explore this new world", icon: "images/checkmark.png" },
+    { action: "close", title: "Close", icon: "images/xmark.png" },
+  ],
+});
+
+push
+  .sendNotification(sub, payload)
+  .then(() => console.log("Notification sent successfully"))
+  .catch((err) => console.error("Error sending notification", err));

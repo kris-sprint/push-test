@@ -1,16 +1,23 @@
 self.addEventListener("push", (e) => {
   self.console.log("push sw event", e);
+  let parsedData = {};
+  if (e.data) {
+    parsedData = e.data.json();
+  }
+
+  self.console.log("parsedData", parsedData);
+
   let options = {
-    body: "This notification was generated from a push!",
-    icon: "images/example.png",
-    vibrate: [100, 50, 100],
-    data: {
+    body: parsedData.body || "local data body",
+    icon: parsedData.icon || "images/example.png",
+    vibrate: parsedData.vibrate || [100, 50, 100],
+    data: parsedData.data || {
       dateOfArrival: Date.now(),
       primaryKey: "2",
     },
-    actions: [
-      { action: "explore", title: "Explore this new world", icon: "images/checkmark.png" },
-      { action: "close", title: "Close", icon: "images/xmark.png" },
+    actions: parsedData.actions || [
+      { action: "explore", title: "local", icon: "images/checkmark.png" },
+      { action: "close", title: "local close", icon: "images/xmark.png" },
     ],
   };
 
