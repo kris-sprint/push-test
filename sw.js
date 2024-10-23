@@ -1,5 +1,5 @@
 self.addEventListener("push", (e) => {
-  console.log("push sw event", e);
+  self.console.log("push sw event", e);
   let options = {
     body: "This notification was generated from a push!",
     icon: "images/example.png",
