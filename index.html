@@ -18,7 +18,8 @@
         let sw = await navigator.serviceWorker.ready; // Get the service worker
         let push = await sw.pushManager.subscribe({
           userVisibleOnly: true, // needed for Chrome
-          applicationServerKey: "BNH47KprCpAVsmy4rMH7-CIk-zMMtSaxOJG_dzYZnY9lsoym3AHlaHfCw7lhLaZ_5hJsx3W7buKU4_5mS6A0-2k",
+          applicationServerKey:
+            "BNH47KprCpAVsmy4rMH7-CIk-zMMtSaxOJG_dzYZnY9lsoym3AHlaHfCw7lhLaZ_5hJsx3W7buKU4_5mS6A0-2k",
         }); // Get the push manager
         console.log("push", JSON.stringify(push));
         // Usually you send the above to the BE to be saved in a database (per each device?)
