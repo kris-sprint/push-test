@@ -23,8 +23,8 @@ let sub = {
 
 // Payload can be anything
 let payload = JSON.stringify({
-  title: "Hello world!",
-  body: "This notification was generated from a push!",
+  title: "different title!",
+  body: "different body",
   icon: "images/example.png",
   vibrate: [100, 50, 100],
   data: {

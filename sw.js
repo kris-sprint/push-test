@@ -1,11 +1,10 @@
 self.addEventListener("push", (e) => {
   self.console.log("push sw event", e);
-  let parsedData = {};
+  let parsedData;
   if (e.data) {
     parsedData = e.data.json();
+    self.console.log("parsedData", parsedData);
   }
-
-  self.console.log("parsedData", parsedData);
 
   let options = {
     body: parsedData.body || "local data body",
