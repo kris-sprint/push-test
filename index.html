@@ -4,9 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      /* Add some basic styles to make the pre tag look nice */
+      #pushDetails {
+        background-color: #f4f4f4;
+        padding: 10px;
+        border: 1px solid #ccc;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+      button.copy-btn {
+        margin-top: 10px;
+      }
+    </style>
   </head>
   <body>
     <button onclick="subscribe()">subscribe</button>
+
+    <div>
+      <h3>Safely exposed details:</h3>
+      <!-- Create an empty pre tag to display the push subscription details -->
+      <pre id="pushDetails">No subscription yet</pre>
+      <button class="copy-btn" onclick="copyToClipboard()">Copy</button>
+    </div>
 
     <script>
       addEventListener("load", async () => {
@@ -22,7 +42,20 @@
             "BNH47KprCpAVsmy4rMH7-CIk-zMMtSaxOJG_dzYZnY9lsoym3AHlaHfCw7lhLaZ_5hJsx3W7buKU4_5mS6A0-2k",
         }); // Get the push manager
         console.log("push", JSON.stringify(push));
-        // Usually you send the above to the BE to be saved in a database (per each device?)
+        
+        // Write the subscription details to the pre tag
+        let pushDetails = document.getElementById("pushDetails");
+        pushDetails.textContent = JSON.stringify(push, null, 2); // Format as JSON with indentation
+      }
+
+      // Function to copy the contents of the pre tag to clipboard
+      function copyToClipboard() {
+        let pushDetails = document.getElementById("pushDetails").textContent;
+        navigator.clipboard.writeText(pushDetails).then(() => {
+          alert("Copied to clipboard!");
+        }).catch(err => {
+          console.error("Failed to copy: ", err);
+        });
       }
     </script>
   </body>
