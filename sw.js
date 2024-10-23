@@ -22,3 +22,26 @@ self.addEventListener("push", (e) => {
 
   e.waitUntil(self.registration.showNotification(parsedData.title, options));
 });
+
+self.addEventListener("notificationclick", (event) => {
+  self.console.log("notificationclick event", event);
+  event.notification.close(); // Close the notification when clicked
+
+  // Handle action based on the action identifier
+  switch (event.action) {
+    case "explore":
+      // Here you would typically open a URL or perform some action
+      clients.openWindow("/");
+      break;
+
+    case "close":
+      // Optionally handle close action, but the notification is already closed
+      self.console.log("Notification closed.");
+      break;
+
+    default:
+      // If no action is defined, you can specify what happens by default
+      clients.openWindow("/");
+      break;
+  }
+});

@@ -10,8 +10,8 @@ let vapidKeys = {
 
 push.setVapidDetails("mailto:test@code.co.uk", vapidKeys.publickKey, vapidKeys.privateKey);
 
-// the subscriptions of users that we want to recieve the notification, saved in a db
-let sub = {
+// the subscriptions (vapidDetails in the types) of users that we want to recieve the notification, saved in a db
+let windowsSub = {
   endpoint:
     "https://fcm.googleapis.com/fcm/send/fzR9qvwJ4HY:APA91bGEHVlXmcejF0pZqH5VDg6mi_lot4U8bf64Ho4oY-9fWqW3cJfgvdwW82rvREMECtu4dILXKae6aIedPtT7smIrgmY5r3cPC-5k9vUaFakn61sbIIjUMtz_PGGKWZZS-wZ-LXoR",
   expirationTime: null,
@@ -20,10 +20,18 @@ let sub = {
     auth: "q4ILycan0w6ZHAaLt2IHzA",
   },
 };
+let iosSub = {
+  endpoint:
+    "https://web.push.apple.com/QFs0ENTS4-j1uss4EYQdmusUvsT9aurI0PiIcdLXKDfne_5zjGufWn1mDCoMP5kxkudTvfUhidVQYvEczGfDCq2mUrDM5_-GW8oz-zCPqdKsb8TTK83_g-McpPJAPeh2a7MwYwx4gQBIbqbHUN9FwJCm49CxhgfMaHGVuu48oF4",
+  keys: {
+    p256dh: "BGyNJi3TUCh1TFfrUQRJ2NlfzAXohWY8wQld5LeEFk43k9NYt4IikRQ47xgd-WdIKPFzUNfhdVuWWCv0vvDxpGg",
+    auth: "xxjxhx9R_3gJyP7BZg_hQA",
+  },
+};
 
 // Payload can be anything
 let payload = JSON.stringify({
-  title: "different title!",
+  title: "Another title test!",
   body: "different body",
   icon: "images/example.png",
   vibrate: [100, 50, 100],
@@ -38,6 +46,6 @@ let payload = JSON.stringify({
 });
 
 push
-  .sendNotification(sub, payload)
+  .sendNotification(iosSub, payload)
   .then(() => console.log("Notification sent successfully"))
   .catch((err) => console.error("Error sending notification", err));
